@@ -1,21 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "./index.css";
-
-const books = [
-  {
-    id: 1,
-    img: "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
-    title: "I love you to the moon and back",
-    author: "amelia heptworth",
-  },
-  {
-    id: 2,
-    img: "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
-    title: "our class is family",
-    author: "shannon",
-  },
-];
+import { books } from "./books";
+import Book from "./Book";
 
 function BookList() {
   return (
@@ -27,20 +14,9 @@ function BookList() {
   );
 }
 
-const Book = (props) => {
-  const { img, title, author } = props;
-  return (
-    <article className="book">
-      <img src={img} />
-      <h1>{title}</h1>
-      <h4>{author}</h4>
-    </article>
-  );
-};
-
 ReactDom.render(<BookList />, document.getElementById("root"));
 
-// same way
+// same way for jsx
 // const Greeting = () => {
 //   return React.createElement("div", {}, React.createElement("h1", {}, "hello"));
 // };
