@@ -2,40 +2,40 @@ import React from "react";
 import ReactDom from "react-dom";
 import "./index.css";
 
+const books = [
+  {
+    id: 1,
+    img: "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
+    title: "I love you to the moon and back",
+    author: "amelia heptworth",
+  },
+  {
+    id: 2,
+    img: "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
+    title: "our class is family",
+    author: "shannon",
+  },
+];
+
 function BookList() {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
+      {books.map((book) => (
+        <Book key={book.id} {...book} /> //we can say book={book}
+      ))}
     </section>
   );
 }
 
-const Book = () => {
-  const price = "85 euro";
+const Book = (props) => {
+  const { img, title, author } = props;
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
-      <h3>{price}</h3>
+      <img src={img} />
+      <h1>{title}</h1>
+      <h4>{author}</h4>
     </article>
   );
-};
-const Image = () => {
-  return (
-    <img
-      src="https://m.media-amazon.com/images/I/51WmZ6UZYdL._SY346_.jpg"
-      alt=""
-    />
-  );
-};
-const Title = () => {
-  return <h1>Book title</h1>;
-};
-const Author = () => {
-  return <h4 style={{ color: "#617d98" }}>author</h4>;
 };
 
 ReactDom.render(<BookList />, document.getElementById("root"));
